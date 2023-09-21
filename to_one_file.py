@@ -25,7 +25,7 @@ if args.outputpath == None:
     args.outputpath = os.path.join("./out")
     
 tifffiles = [f for f in glob(os.path.join(args.inputpath,'**'), recursive=args.recursive) if re.match(r".*Ch.*(tif$)|(tiff$)|(TIF$)|(TIFF$)", f)]
-filepaths, channels, suffixes = list((t for t in zip(*[(*f[:f.find('.')].split('_'),f[f.find('.'):]) for f in tifffiles])))#, list(f[f.find('.'):] for f in tifffiles)
+filepaths, channels, suffixes = list((t for t in zip(*[(*f[:f.find('.')].split('_'),f[f.find('.'):]) for f in tifffiles])))
 int_channels = sorted([int(c[2:]) for c in set(channels)])
 n_channels = len(int_channels)
 relevant_suffixes = [suffix for suffix in suffixes[::n_channels]]
